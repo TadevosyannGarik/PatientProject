@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изменить пациента</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #DDDDDD;
+        }
+
+       .container {
+        margin-top: 50px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+
+    }
+
+    .form-label {
+
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+ /* Additional styles */
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+</style>
+
+</head>
+<body>
+<div class="container" >
+    <h1>Изменить пациента</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group" >
+            <label for="{{ form.first_name.id_for_label }}" class="form-label" style="text-align:center; ">Имя:</label>
+            {{ form.first_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.last_name.id_for_label }}" class="form-label" style="text-align:center;">Фамилия:</label>
+            {{ form.last_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.date_added.id_for_label }}" class="form-label" style="text-align:center;">Дата сдачи:</label>
+            {{ form.date_added }}
+        </div>
+        <button type="submit" class="btn btn-outline-success d-block mx-auto" style="height:40px; border-radius: 10px;  ">Сохранить
+        <i class="fa-solid fa-check"></i>
+        </button>
+    </form>
+</div>
+</body>
+</html>

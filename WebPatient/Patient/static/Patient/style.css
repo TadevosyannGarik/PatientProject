@@ -1,0 +1,233 @@
+        body {
+            background-color: #DDDDDD;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .col-md-6 {
+            width: 45%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="date"],
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .date-input-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .date-input-container input[type="date"] {
+            width: 48%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            font-size: 16px;
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Add your animations here */
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-up {
+            0% {
+                transform: translateY(20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fade-in 1s ease-out;
+        }
+
+        .slide-up {
+            animation: slide-up 0.5s ease-out;
+        }
+
+        /* Add additional styles here */
+
+        /* Custom styles for search input */
+        .search-input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline; /* Add this line */
+        }
+
+        .search-input-container input[type="text"] {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .navbar {
+     display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 1100px;
+    margin-left: 410px;
+    border-radius:10px;
+    margin-top: 50px;
+        }
+
+        /* Дополнительные стили для навигационного меню */
+        .navbar-brand {
+            font-size: 24px;
+
+        }
+    .navbar-nav.ml-auto {
+        display: flex;
+        align-items: center;
+    }
+.container{
+    max-width: 1175px;
+}
+.patient-cell {
+text-decoration: none;
+border-radius:10px;
+    transition: background-color 0.3s; /* Длительность анимации */
+}
+
+.patient-cell:hover {
+text-decoration: none;
+border-radius:10px;
+    background-color: #ffc107   ; /* Цвет фона при наведении */
+}
+
+    body {
+        background-color: #DDDDDD;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .col-md-6 {
+        width: 45%;
+        position: relative; /* Добавлено для позиционирования datalist */
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        font-size: 16px;
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Add your animations here */
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-up {
+        0% {
+            transform: translateY(20px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in {
+        animation: fade-in 1s ease-out;
+    }
+
+    .slide-up {
+        animation: slide-up 0.5s ease-out;
+    }
+
+.datalist-container {
+    position: absolute;
+    top: 84px;
+    left: 170px;
+    width: 100%;
+
+    /* Add your animation here */
+    .highlight {
+        animation: highlight-row 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes highlight-row {
+        0% {
+            background-color: #ffffcc;
+        }
+        100% {
+            background-color: transparent;
+        }
+    }
+
+    .additional-buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #f8f9fa;
+        padding: 10px;
+    }

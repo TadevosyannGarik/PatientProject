@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пациентов</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'Patient/style.css' %}">
+
+</head>
+<body>
+<div class="container" style="    max-width: 1175px;">
+    <div class="row">
+        <div class="col-md-6 fade-in">
+            <br>
+            <h1>Список всех пациентов</h1>
+            <br><br><br><br>
+            <table id="patients-table">
+                <thead>
+                             <tr style="height:45px;">
+                                <th style="border-radius: 10px 0px 0px 10px; text-align: center;">Имя</th>
+                                <th style="text-align: center;">Фамилия</th>
+                                <th style="text-align: center;">Дата сдачи</th>
+                                <th style="border-radius: 0px 10px 10px 0px; text-align: center;">Действия</th>
+                            </tr>
+                </thead>
+                <tbody>
+                {% for patient in patients %}
+                <tr data-patient-id="{{ patient.id }}">
+                    <td>{{ patient.first_name }}</td>
+                    <td>{{ patient.last_name }}</td>
+                    <td>{{ patient.date_added }}</td>
+                    <td>
+                        <a href="{% url 'edit_patient' patient.id %}" class="btn btn-outline-primary"  style="border-radius:10px; height:40px;"> Изменить
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </a>
+                        <a href="{% url 'delete_patient' patient.id %}" class="btn btn-outline-danger"  style="border-radius:10px; height:40px;">Удалить
+                            <i class="fa-solid fa-user-slash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <!-- Добавленный элемент datalist -->
+            <div class="datalist-container" style="wid">
+                <input list="users-list" id="user-input" style="border-radius:10px; height:40px; width:250px; border: 1px solid #343a40;" placeholder="Выбрать одного пациента">
+                <datalist id="users-list">
+                    <!-- Данные пользователей из базы данных -->
+                    {% for patient in patients %}
+                    <option value="{{ patient.first_name }} {{ patient.last_name }}" data-patient-id="{{ patient.id }}">
+                    {% endfor %}
+                </datalist>
+            </div>
+        </div>
+    </div>
+</div>
+            <button onclick="window.location.href='{% url 'patient_list' %}'" class="btn btn-primary" style="position: absolute; top: 10px; left: 10px;">Назад</button>
+
+<script>
+    var usersList = document.getElementById('users-list');
+    var userInput = document.getElementById('user-input');
+    var datalistContainer = document.querySelector('.datalist-container');
+    var patientsTable = document.getElementById('patients-table');
+
+    // Обновление значения input при выборе опции
+    userInput.addEventListener('input', function () {
+        var selectedOption = usersList.querySelector('option[value="' + this.value + '"]');
+        if (selectedOption) {
+            this.value = selectedOption.value;
+            var selectedPatientId = selectedOption.getAttribute('data-patient-id');
+            filterPatientsTable(selectedPatientId);
+        }
+    });
+
+    // Позиционирование контейнера с datalist
+    userInput.addEventListener('focus', function () {
+        datalistContainer.style.display = 'block';
+    });
+    // Фильтрация таблицы пациентов
+    function filterPatientsTable(patientId) {
+        var rows = patientsTable.getElementsByTagName('tr');
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var patientIdAttr = row.getAttribute('data-patient-id');
+            if (patientIdAttr && patientIdAttr !== patientId) {
+                row.style.display = 'none';
+                row.classList.remove('highlight'); // Удаляем подсветку у неподходящих пациентов
+            } else {
+                row.style.display = '';
+                row.classList.add('highlight'); // Добавляем подсветку выбранному пациенту
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
